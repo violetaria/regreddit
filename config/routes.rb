@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 ## Post Routes
   get "posts", to: "posts#index"
-  get "posts/new", to "posts#new"
+  get "posts/new", to: "posts#new"
   post "posts", to: "posts#create"
 
 ## Comments Routes
