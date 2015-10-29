@@ -4,7 +4,7 @@
 
     <div class="user-field">
       <%= label_tag "Username: " %>
-      <%= text_field_tag :name %>
+      <%= text_field_tag :username %>
     </div>
 
     <div class="user-field">
@@ -17,9 +17,8 @@
       <%= password_field_tag :password %>
     </div>
 
-    <%= submit_tag "Sigh Up!" %>
+    <%= submit_tag "Sign Up!" %>
 
 <% end %>
 
-<!-- ## TODO fix this -->
-<%= link_to "Cancel", :back %>
+<%= link_to "Cancel", root_path %>
