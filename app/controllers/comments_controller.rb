@@ -3,13 +3,14 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def show
-    @post = Posts.find(id: params[:id])
+    @post = Post.find(params[:id])
+    binding.pry
     @comments = @post.comments
     render :show
   end
 
   def create
-    @post = Posts.find(id: params[:id])
+    @post = Post.find(params[:id])
     @post.comments.create(user_id: current_user.id,
                          content: :content )
     redirect_to posts_path(@post)
