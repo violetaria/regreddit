@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:id])
     @post.comments.create(user_id: current_user.id,
                          content: params[:content] )
-    redirect_to posts_path(@post)
+    redirect_to comments_show_path(@post)
   end
 
 end
