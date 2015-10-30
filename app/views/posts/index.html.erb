@@ -1,0 +1,14 @@
+<h2>Regreddit</h2>
+
+	<ul class="posts">
+    <% @posts.each do |post| %>
+        <li class="post">
+            <%= link_to post.title, posts_path(post) %>
+        </li>
+    <% end %>
+
+    <div class="posts-nav">
+    	<%= paginate @posts %>
+        <%= link_to "Add a Post", posts_new_path %>
+    </div>
+	</ul>

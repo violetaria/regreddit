@@ -1,0 +1,16 @@
+<h1>Create new post</h1>
+
+<%= form_tag(posts_path) do %>
+	 <div class="post-field">
+        <%= label_tag "Title: " %>
+        <%= text_field_tag :title %>
+    </div>
+
+    <div class="post-field">
+        <%= label_tag "URL: " %>
+        <%= text_field_tag :url %>
+    </div>
+
+    <%= submit_tag "Post" %>
+
+<% end %>
