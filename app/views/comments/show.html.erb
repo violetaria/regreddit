@@ -1,4 +1,4 @@
-<h2><a href="<%= @post.url %>"><%= @post.title %></a></h2>
+<h2><%= link_to @post.title, @post.url %></h2>
 
 <h4><%= pluralize(@post.comments.count, "comment") %></h4>
 
