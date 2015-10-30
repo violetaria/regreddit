@@ -1,16 +1,19 @@
 <h2><a href="<%= @post.url %>"><%= @post.title %></a></h2>
 
-<h4><%= pluralize(@post.comments.count, "comment") %>/h4>
+<h4><%= pluralize(@post.comments.count, "comment") %></h4>
 
 <!-- CHECK IF USER IS LOGGED IN, SHOW ONLY IF LOGGED IN -->
-<span class="comment-text">Commenting as: USERNAME </span>
-<%= form_tag comments_create_path(@post), method: :post do %>
-    <div class="comment-field">
-        <%= text_area_tag :content %>
-    </div>
+<% if current_user %>
+    <span class="comment-text">Commenting as: <%= current_user.username %> </span>
+    <%= form_tag comments_create_path(@post), method: :post do %>
+        <div class="comment-field">
+            <%= text_area_tag :content %>
+        </div>
 
-    <%= submit_tag "Let me be heard!" %>
+        <%= submit_tag "Let me be heard!" %>
+    <% end %>
 <% end %>
+
 
 <%= link_to "Post Index", posts_path %>
 
