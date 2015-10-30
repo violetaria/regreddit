@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ul {
+	list-style: none;
+}
+
+.comment-link a {
+	text-decoration: none;
+	color: #888;
+	font-size: 10px;
+	font-weight: bold;
+	font-family: normal x-small verdana,arial,helvetica,sans-serif;
+}
+
