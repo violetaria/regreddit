@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       redirect_to posts_path
     else
       redirect_to login_path
+       flash[:notice] = "Password and User not correct. Please Login"
     end
   end
 
