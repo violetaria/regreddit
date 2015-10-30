@@ -3,7 +3,13 @@
 	<ul class="posts">
     <% @posts.each do |post| %>
         <li class="post">
-            <%= link_to post.title, comments_show_path(post) %>
+            <%= link_to post.title, "http://#{post.url}" %>
+            <div class="comment-link">
+                <p>Submitted by <%= post.user.username %> <em>Written: <%= time_ago_in_words(post.created_at) %> ago</em>
+                </p>
+                <%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post) %>
+
+            </div>
         </li>
     <% end %>
     </ul>
@@ -11,4 +17,4 @@
     	<%= paginate @posts %>
         <%= link_to "Add a Post", posts_new_path %>
     </div>
-	
+
