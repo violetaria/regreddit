@@ -19,5 +19,3 @@
 # Rubymine ignore
 .idea
 
-# Schema was Rickard's idea
-/db/schema.rb
