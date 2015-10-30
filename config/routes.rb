@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   post "posts", to: "posts#create"
 
 ## Comments Routes
-  get "posts/:id/comments", to: "comments#show"
-  post "posts/:id/comments", to: "comments#create"
+  get "posts/:id/comments", to: "comments#show", as: "comments_show"
+  post "posts/:id/comments", to: "comments#create", as: "comments_create"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

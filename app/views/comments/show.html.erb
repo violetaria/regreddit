@@ -1,0 +1,29 @@
+<h2><a href="<%= @post.url %>"><%= @post.title %></a></h2>
+
+<h4><%= pluralize(@post.comments.count, "comment") %>/h4>
+
+<!-- CHECK IF USER IS LOGGED IN, SHOW ONLY IF LOGGED IN -->
+<span class="comment-text">Commenting as: USERNAME </span>
+<%= form_tag comments_create_path(@post), method: :post do %>
+    <div class="comment-field">
+        <%= text_area_tag :content %>
+    </div>
+
+    <%= submit_tag "Let me be heard!" %>
+<% end %>
+
+<%= link_to "Post Index", posts_path %>
+
+  <div class="comment-list">
+    <ul>
+    <% @comments.each do |comment| %>
+      <li>
+        <em>Written by: <span class="comment-username"><%= comment.user.username %></span> <%= time_ago_in_words(comment.created_at) %> ago</em>
+        <br/>
+        <p class="comment-content">
+          <%= simple_format(comment.content) %>
+        </p>
+      </li>
+    <% end %>
+    </ul>
+  </div>
