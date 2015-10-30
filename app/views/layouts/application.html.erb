@@ -12,7 +12,14 @@
       <h3><%= flash[:notice] %></h3>
   <% end %>
 </div>
-
+<nav>
+    <% if current_user %>
+      <%= link_to "Logoff", login_path, method: :delete %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+   <% end %>
+   <%= link_to "Sign Up", signup_path %>
+</nav>
 <%= yield %>
 
 </body>

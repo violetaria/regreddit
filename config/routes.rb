@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  root to: "registrations#index"
+  root to: "posts#index"
 
   ## Registration Routes
   get "signup", to: "registrations#new"

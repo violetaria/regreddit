@@ -15,10 +15,6 @@ class RegistrationsController < ApplicationController
     else
       render :new
     end
-
   end
 
-  def index
-    render :index
-  end
 end
