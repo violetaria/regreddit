@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    binding.pry
     @comments = @post.comments
     render :show
   end
