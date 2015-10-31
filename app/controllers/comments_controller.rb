@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
  ## TODO
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :delete]
 
   def show
     @post = Post.find(params[:id])
@@ -15,4 +15,16 @@ class CommentsController < ApplicationController
     redirect_to comments_show_path(@post)
   end
 
+  def delete
+    @post =Post.find(params[:post_id])
+    user = current_user
+    comment = Comment.find(params[:comment_id])
+    if comment && (user.id == comment.user.id)
+      comment.destroy
+      flash[:notice] = "Comment deleted successfully"
+    else
+      flash[:notice] = "That comment doesn't belong to you!"
+    end
+    redirect_to comments_show_path(@post)
+  end
 end

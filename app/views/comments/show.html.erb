@@ -2,7 +2,6 @@
 
 <h4><%= pluralize(@post.comments.count, "comment") %></h4>
 
-<!-- CHECK IF USER IS LOGGED IN, SHOW ONLY IF LOGGED IN -->
 <% if current_user %>
     <span class="comment-text">Commenting as: <%= current_user.username %> </span>
     <%= form_tag comments_create_path(@post), method: :post do %>
@@ -20,9 +19,10 @@
       <li>
         <em>Written by: <span class="comment-username"><%= comment.user.username %></span> <%= time_ago_in_words(comment.created_at) %> ago</em>
         <br/>
-        <p class="comment-content">
+        <div class="comment-content">
           <%= simple_format(comment.content) %>
-        </p>
+        </div>
+        <%= link_to "Delete comment", comments_delete_path(post_id: @post.id,comment_id: comment.id), method: :delete %>
       </li>
     <% end %>
     </ul>
