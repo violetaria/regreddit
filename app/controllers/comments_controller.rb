@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
- ## TODO
   before_action :authenticate_user!, only: [:create, :delete]
 
   def show
