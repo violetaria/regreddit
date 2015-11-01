@@ -5,23 +5,39 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+  <![endif]-->
 </head>
 <body>
-<div class="notice">
-  <% if flash[:notice] %>
-      <h3><%= flash[:notice] %></h3>
-  <% end %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav navbar-nav navbar-left">
+          <% if current_user %>
+            <li><%= link_to "Logoff", login_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", login_path %></li>
+          <% end %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Post Index", posts_path %></li>
+        </ul>
+      </nav>
+    </div>
+</header>
+
+<div class="container">
+  <div class="notice">
+    <% if flash[:notice] %>
+        <h3><%= flash[:notice] %></h3>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
 </div>
-<nav>
-    <% if current_user %>
-      <%= link_to "Logoff", login_path, method: :delete %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-   <% end %>
-   <%= link_to "Sign Up", signup_path %>
-   <%= link_to "Post Index", posts_path %>
-</nav>
-<%= yield %>
 
 </body>
 </html>
