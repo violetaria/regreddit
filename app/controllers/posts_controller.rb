@@ -22,7 +22,6 @@ class PostsController < ApplicationController
 	end
 
   def delete
-		binding.pry
 		@post = Post.find(params[:id])
 		user = current_user
 		if user.id == @post.user.id
