@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151101022028) do
 
-  create_table "Votes", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.integer  "vote"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string   "content",    null: false
     t.integer  "post_id",    null: false
@@ -47,5 +39,13 @@ ActiveRecord::Schema.define(version: 20151101022028) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.integer  "vote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
