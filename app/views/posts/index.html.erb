@@ -10,7 +10,6 @@
                 <p>Submitted by <%= post.user.username %> <em>Written: <%= time_ago_in_words(post.created_at) %> ago</em>
                 </p>
                 <%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post) %>
-
             </div>
         </li>
     <% end %>
