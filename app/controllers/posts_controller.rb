@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.page(params[:page]).per(10)
+		@posts = Post.order("created_at DESC").page(params[:page]).per(10)
     	render :index
 	end
 
