@@ -23,10 +23,12 @@ Rails.application.routes.draw do
   get "posts", to: "posts#index"
   get "posts/new", to: "posts#new"
   post "posts", to: "posts#create"
+  delete "posts", to: "posts#delete"
 
 ## Comments Routes
   get "posts/:id/comments", to: "comments#show", as: "comments_show"
   post "posts/:id/comments", to: "comments#create", as: "comments_create"
+  delete "posts/:id/comments", to: "comments#delete", as: "comments_delete"
 
 ## Voting Routes
   post "vote/up", to: "vote#up"
