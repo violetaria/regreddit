@@ -1,6 +1,6 @@
-<h1>Create a new User</h1>
+<%= form_tag signup_path, method: :post, class: "form-signin" do %>
+    <h1 class="form-signin-heading">Create a new User</h1>
 
-<%= form_tag signup_path, method: :post do %>
     <% if @user.errors.any? %>
         <div class="form-errors">
           <h2><%= pluralize(@user.errors.count, "error") %> prohibited your user from being saved:</h2>
@@ -13,23 +13,14 @@
         </div>
     <% end %>
 
-    <div class="user-field">
-      <%= label_tag "Username: " %>
-      <%= text_field_tag :username, @user.username %>
-    </div>
+      <%= text_field_tag :username, @user.username, class: "form-control", placeholder: "Enter Username" %>
 
-    <div class="user-field">
-      <%= label_tag "Email: " %>
-      <%= text_field_tag :email, @user.email %>
-    </div>
+      <%= text_field_tag :email, @user.email, class: "form-control", placeholder: "Enter Email" %>
 
-    <div class="user-field">
-      <%= label_tag "Password: " %>
-      <%= password_field_tag :password %>
-    </div>
+      <%= password_field_tag :password, nil, class: "form-control", placeholder: "Enter Password" %>
 
-    <%= submit_tag "Sign Up!" %>
+    <%= submit_tag "Sign Up!" , class: "btn btn-lg btn-primary btn-block"%>
 
 <% end %>
 
-<%= link_to "Cancel", root_path %>
+<h2><span class="label label-default"><%= link_to "Cancel", root_path, class: "label label-default" %></h2></span>
