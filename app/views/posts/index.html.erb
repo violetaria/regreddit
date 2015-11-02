@@ -1,21 +1,21 @@
-<h2>Regreddit</h2>
+<div class="page-header">
+  <h2>All Posts</h2>
+</div>
 
 	<ul class="posts">
     <% @posts.each do |post| %>
         <li class="post">
-           
-            <%= link_to post.title, post.url %>
+            <%= link_to post.title, post.url %> (<%= post.url %>)
             <div class="comment-link">
-                <p>Submitted by <%= post.user.username %> <em>Written: <%= time_ago_in_words(post.created_at) %> ago</em>
-                </p>
-                <%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post) %>
-
+                Submitted by <%= post.user.username %> <em>Written: <%= time_ago_in_words(post.created_at) %> ago</em>
+                <%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post), class: "badge" %>
             </div>
         </li>
     <% end %>
     </ul>
     <div class="posts-nav">
     	<%= paginate @posts %>
-        <%= link_to "Add a Post", posts_new_path %>
+        <%= link_to "Add a Post", posts_new_path, class: "label label-default" %>
     </div>
+
 
