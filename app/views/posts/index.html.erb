@@ -5,7 +5,7 @@
 	<ul class="posts">
     <% @posts.each do |post| %>
         <li class="post">
-            <%= link_to post.title, "http://#{post.url}" %> (<%= post.url %>)
+            <%= link_to post.title, post.url %> (<%= post.url %>)
             <div class="comment-link">
                 Submitted by <%= post.user.username %> <em>Written: <%= time_ago_in_words(post.created_at) %> ago</em>
                 <%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post), class: "badge" %>
