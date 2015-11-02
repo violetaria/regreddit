@@ -3,7 +3,7 @@ class CreateVotes < ActiveRecord::Migration
     create_table :votes do |t|
       t.integer :post_id
       t.integer :user_id
-      t.string :vote
+      t.integer :vote
 
       t.timestamps null: false
     end
