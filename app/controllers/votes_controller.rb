@@ -4,13 +4,13 @@ class VotesController < ApplicationController
 
   def up
     @post = Post.find(params[:id])
-    @post.vote.create(user_id: current_user.id, post_id: @post.id vote: :vote +=1)
+    @post.vote.create(user_id: current_user.id, post_id: @post.id ,vote: 1)
     redirect_to post_path(@post)
   end
 
   def down
     @post = Post.find(params[:id])
-    @post.vote.create(user_id: current_user.id, post_id: @post.id vote: :vote -=1)
+    @post.vote.create(user_id: current_user.id, post_id: @post.id, vote: :vote -1)
     redirect_to post_path(@post)
   end
 
