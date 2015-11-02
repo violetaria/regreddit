@@ -36,6 +36,9 @@
   </div>
 
   <div class="container">
+    <% if current_user %>
+        <span class="label label-primary">Logged in: <%= current_user.username %></span>
+    <% end %>
     <%= yield %>
   </div>
 </div>
