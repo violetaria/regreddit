@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/violetaria/regreddit.svg?branch=master)](http://travis-ci.org/violetaria/regreddit)
+[![Build Status](https://travis-ci.org/violetaria/regreddit.svg?branch=documentation)](https://travis-ci.org/violetaria/regreddit)
  
 == README
 
