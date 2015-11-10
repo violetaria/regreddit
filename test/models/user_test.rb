@@ -5,11 +5,29 @@ class UserTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  ## TODO write one test
-  def test_can_create_valid_user
+  def test_new_valid_user
     user = User.new(email: "user3",
                     username: "userthree",
                     password: "password")
     assert user.valid?
   end
+
+  def test_new_user_invalid_email
+    user = User.new(username: "userthree",
+                    password: "password")
+    refute user.valid?
+  end
+
+  def test_new_user_invalid_username
+    user = User.new(email: "user3",
+                    password: "password")
+    refute user.valid?
+  end
+
+  def test_new_user_invalid_password
+    user = User.new(username: "userthree",
+                    email: "user3")
+    refute user.valid?
+  end
+
 end
