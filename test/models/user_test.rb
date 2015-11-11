@@ -9,7 +9,8 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(email: "user3",
                     username: "userthree",
                     password: "password")
-    assert user.valid?
+    assert user.save
+    assert user.errors.empty?
   end
 
   def test_new_user_invalid_email

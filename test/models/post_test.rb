@@ -6,9 +6,10 @@ class PostTest < ActiveSupport::TestCase
   # end
 
   def test_new_valid_post
-    post = users(:userone).posts.new(url: "http://www.test.com",
+    post = users(:one).posts.new(url: "http://www.test.com",
                                      title: "Test Title")
 
     assert post.valid?
   end
+
 end
