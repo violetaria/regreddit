@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def delete
-    @post =Post.find(params[:post_id])
+    @post =Post.find(params[:id])
     user = current_user
     comment = Comment.find(params[:comment_id])
     if comment && (user.id == comment.user.id)
