@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-#  title: MyString
-#  url: MyString
-#  user_id: 1
-#
-#two:
-#  title: MyString
-#  url: MyString
-#  user_id: 1
+one:
+  title: "cats are awesome"
+  url: http://www.cats.com
+  user: one
+
+two:
+  title: "dogs are awesome"
+  url: http://wwww.dogs.com
+  user: one
