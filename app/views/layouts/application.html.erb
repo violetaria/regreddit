@@ -17,11 +17,11 @@
       <nav>
         <ul class="nav navbar-nav navbar-left">
           <% if current_user %>
-            <li><%= link_to "Logoff", login_path, method: :delete %></li>
+            <li><%= link_to "Logoff", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Login", login_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
           <% end %>
-          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Post Index", posts_path %></li>
         </ul>
       </nav>
