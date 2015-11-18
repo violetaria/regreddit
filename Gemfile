@@ -31,6 +31,10 @@ gem "kaminari"
 # Use postgres everrywhere
 gem "pg"
 
+# Use foreman to setup environment variables and run the app.
+## (Alternatives include: foreman, dotenv, figaro)
+gem "foreman"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
