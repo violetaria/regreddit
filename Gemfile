@@ -28,6 +28,9 @@ gem "kaminari"
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use postgres everrywhere
+gem "pg"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -38,7 +41,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
 group :production do
-  gem "pg"
   gem "rails_12factor"
 end
 
@@ -48,9 +50,6 @@ group :development, :test do
   
   # I LOVE YOU SO MUCH PRY
   gem "pry"
-
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 
 end
 
