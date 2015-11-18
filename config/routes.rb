@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,15 +12,17 @@ Rails.application.routes.draw do
   root to: "posts#index"
 
   ## Registration Routes
-  get "signup", to: "registrations#new"
-  post "signup", to: "registrations#create"
+  # get "signup", to: "registrations#new"
+  # post "signup", to: "registrations#create"
 
 ## Session Routes
-  get "login", to: "sessions#new"
-  post "login", to: "sessions#create"
-  delete "login", to: "sessions#destroy"
+  # get "login", to: "sessions#new"
+  # post "login", to: "sessions#create"
+  # delete "login", to: "sessions#destroy"
 
-## Post Routes
+  devise_for :users
+
+  ## Post Routes
   get "posts", to: "posts#index"
   get "posts/new", to: "posts#new"
   post "posts", to: "posts#create"
