@@ -11,19 +11,21 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:id])
     @post.comments.create(user_id: current_user.id,
                          content: params[:content] )
+
     redirect_to comments_show_path(@post)
   end
 
   def delete
-    @post =Post.find(params[:post_id])
+    @post =Post.find(params[:id])
     user = current_user
     comment = Comment.find(params[:comment_id])
     if comment && (user.id == comment.user.id)
       comment.destroy
       flash[:notice] = "Comment deleted successfully"
+      redirect_to comments_show_path(@post)
     else
       flash[:notice] = "That comment doesn't belong to you!"
+      redirect_to comments_show_path(@post), status: :unauthorized
     end
-    redirect_to comments_show_path(@post)
   end
 end
