@@ -2,14 +2,19 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def new
-		post = Post.new
+		@post = Post.new
 		render :new
 	end
 
 	def create
-		post = current_user.posts.create(title: params[:title],
-                                     url: params[:url])
-    	redirect_to posts_path(post)
+		post = current_user.posts.new(title: params[:title],
+																	url: params[:url])
+		if post.save
+			redirect_to posts_path(post)
+		else
+			flash[:errors] = post.errors.full_messages
+			redirect_to posts_path(post)
+		end
 	end
 
 	def index
@@ -30,7 +35,7 @@ class PostsController < ApplicationController
 			@posts = Post.page(params[:page]).per(10)
 			redirect_to posts_path(@posts)
 		else
-			flash[:notice] = "That post doesn't belong to you!"
+			flash[:alert] = "That post doesn't belong to you!"
 			redirect_to comments_show_path(@post)
 		end
 	end

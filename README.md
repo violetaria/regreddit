@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/violetaria/regreddit.svg?branch=documentation)](https://travis-ci.org/violetaria/regreddit)
+ 
 == README
 
 This README would normally document whatever steps are necessary to get the

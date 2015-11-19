@@ -26,7 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #add kaminari because Brit likes it
 gem "kaminari"
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
+
+# Use postgres everrywhere
+gem "pg"
+
+# Use foreman to setup environment variables and run the app.
+## (Alternatives include: foreman, dotenv, figaro)
+gem "foreman"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -34,9 +41,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# use devise for authentication
+gem 'devise'
+
+gem 'puma'
+
 group :production do
-  gem "pg"
   gem "rails_12factor"
+
 end
 
 group :development, :test do
@@ -45,9 +57,6 @@ group :development, :test do
   
   # I LOVE YOU SO MUCH PRY
   gem "pry"
-
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 
 end
 

@@ -17,11 +17,11 @@
       <nav>
         <ul class="nav navbar-nav navbar-left">
           <% if current_user %>
-            <li><%= link_to "Logoff", login_path, method: :delete %></li>
+            <li><%= link_to "Logoff", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Login", login_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
           <% end %>
-          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Post Index", posts_path %></li>
         </ul>
       </nav>
@@ -30,13 +30,25 @@
 
 <div class="container">
   <div class="notice">
+    <% if flash[:errors] %>
+        <h3 class="alert alert-danger">
+          <% flash[:errors].each do |error| %>
+            <%= error %><br>
+          <% end %>
+        </h3>
+    <% end %>
+  </div>
+  <div class="notice">
     <% if flash[:notice] %>
-        <h3 class="alert alert-danger"><%= flash[:notice] %></h3>
+        <h3 class="alert alert-info"><%= flash[:notice] %></h3>
+    <% end %>
+    <% if flash[:alert] %>
+        <h3 class="alert alert-warning"><%= flash[:alert] %></h3>
     <% end %>
   </div>
 
   <div class="container">
-    <% if current_user %>
+    <% if user_signed_in? %>
         <span class="label label-primary">Logged in: <%= current_user.username %></span>
     <% end %>
     <%= yield %>
