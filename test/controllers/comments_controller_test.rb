@@ -23,7 +23,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_response :found # 302
 
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
   end
 
   test "users can show comments while not logged in" do
@@ -58,7 +58,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_response :found # 302
 
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
   end
 
   test "users cannot delete other users comments while logged in" do
@@ -76,11 +76,11 @@ class CommentsControllerTest < ActionController::TestCase
 
   private
   def login_user_one!
-    session[:user_id] = users(:one).id
+    sign_in users(:one)
   end
 
   def login_user_two!
-    session[:user_id] = users(:two).id
+    sign_in users(:two)
   end
 
 end
