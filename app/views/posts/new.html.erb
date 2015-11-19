@@ -10,8 +10,11 @@
         <%= text_field_tag :url %>
     </div>
 
-    <%= submit_tag "Post" %>
-    <p>
-	<%= link_to "Nevermind", posts_path %>
-	</p>
+    <div class="btn-primary">
+      <%= submit_tag "Post" %>
+    </div>
+
 <% end %>
+<div class="btn-link">
+  <%= link_to "Nevermind", posts_path %>
+</div>
