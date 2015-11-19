@@ -7,9 +7,14 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		post = current_user.posts.create(title: params[:title],
-                                     url: params[:url])
-    	redirect_to posts_path(post)
+		post = current_user.posts.new(title: params[:title],
+																	url: params[:url])
+		if post.save
+			redirect_to posts_path(post)
+		else
+			flash[:alert] = post.errors.full_messages
+			redirect_to posts_path(post)
+		end
 	end
 
 	def index
