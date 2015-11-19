@@ -78,5 +78,17 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mandrill
-  set config.action_mailer.default_url_options = { host: 'smtp.mandrillapp.com', port: 587 }
+  set config.action_mailer.default_url_options = { host: 'pacific-hamlet-1123.', port: 443 }
+
+  # ActionMailer setup to use Mandrill
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      address: 'smtp.mandrillapp.com',
+      port: 587,
+      user_name: ENV['MANDRILL_USERNAME'],
+      password: ENV["MANDRILL_API_KEY"],
+      authentication: 'plain',
+      enable_starttls_auto: true
+  }
 end
