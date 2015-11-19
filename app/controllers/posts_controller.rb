@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 		if post.save
 			redirect_to posts_path(post)
 		else
-			flash[:alert] = post.errors.full_messages
+			flash[:errors] = post.errors.full_messages
 			redirect_to posts_path(post)
 		end
 	end

@@ -30,6 +30,15 @@
 
 <div class="container">
   <div class="notice">
+    <% if flash[:errors] %>
+        <h3 class="alert alert-danger">
+          <% flash[:errors].each do |error| %>
+            <%= error %><br>
+          <% end %>
+        </h3>
+    <% end %>
+  </div>
+  <div class="notice">
     <% if flash[:notice] %>
         <h3 class="alert alert-info"><%= flash[:notice] %></h3>
     <% end %>
