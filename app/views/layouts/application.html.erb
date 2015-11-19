@@ -31,7 +31,7 @@
 <div class="container">
   <div class="notice">
     <% if flash[:notice] %>
-        <h3 class="alert alert-danger"><%= flash[:notice] %></h3>
+        <h3 class="alert alert-info"><%= flash[:notice] %></h3>
     <% end %>
     <% if flash[:alert] %>
         <h3 class="alert alert-warning"><%= flash[:alert] %></h3>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="container">
-    <% if current_user %>
+    <% if user_signed_in? %>
         <span class="label label-primary">Logged in: <%= current_user.username %></span>
     <% end %>
     <%= yield %>
