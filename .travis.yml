@@ -1,0 +1,10 @@
+anguage: ruby
+rvm:
+#  - 2.1.6
+  - 2.2.2
+env:
+  - DB=regreddit_test
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate test
+before_script:
+  - psql -c 'create database regreddit_test' -U postgres
