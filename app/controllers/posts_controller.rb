@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def new
-		post = Post.new
+		@post = Post.new
 		render :new
 	end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 			@posts = Post.page(params[:page]).per(10)
 			redirect_to posts_path(@posts)
 		else
-			flash[:notice] = "That post doesn't belong to you!"
+			flash[:alert] = "That post doesn't belong to you!"
 			redirect_to comments_show_path(@post)
 		end
 	end
