@@ -44,8 +44,11 @@ gem "foreman"
 # use devise for authentication
 gem 'devise'
 
+gem 'puma'
+
 group :production do
   gem "rails_12factor"
+
 end
 
 group :development, :test do
