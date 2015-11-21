@@ -53,6 +53,14 @@ p {
   line-height: 1.7em;
 }
 
+.user-logon{
+  background-color: #D8D7FF;
+}
+
+nav.navbar{
+  background-color: #BBA0FB;
+}
+
 ul.comment-list{
   padding-left: 0px;
 }
@@ -78,6 +86,14 @@ ul.comment-list{
 
 .comment-link{
   margin-bottom: 10px;
+}
+
+.post-link{
+  font-size:20px;
+}
+
+.post-url{
+  font-size: 12px;
 }
 
 /* header */

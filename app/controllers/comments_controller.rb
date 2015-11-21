@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :delete]
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:user).find(params[:id])
     @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
     render :show
   end

@@ -11,22 +11,24 @@
   <![endif]-->
 </head>
 <body>
-<header class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-      <a class="navbar-brand" href="<%= root_path %>">Regreddit</a>
-      <nav>
-        <ul class="nav navbar-nav navbar-left">
-          <% if current_user %>
-            <li><%= link_to "Logoff", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Login", new_user_session_path %></li>
-          <% end %>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <li><%= link_to "Post Index", posts_path %></li>
-        </ul>
-      </nav>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="<%= root_path %>">Regreddit</a>
+          <%= link_to "Posts", posts_path, class: "navbar-brand" %>
+        </div>
+        <div class="nav navbar-collapse collapse">
+          <div class="navbar-right navbar-brand">
+            <% if current_user %>
+              <%= current_user.username %> <span class="badge"><%= current_user.posts.count %></span>
+              <%= link_to "Logoff", destroy_user_session_path, method: :delete %>
+            <% else %>
+              Want to join? <%= link_to "Login", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> in seconds.
+            <% end %>
+          </div>
+        </div>
     </div>
-</header>
+</nav>
 
 <div class="container">
   <div class="notice">
@@ -48,9 +50,6 @@
   </div>
 
   <div class="container">
-    <% if user_signed_in? %>
-        <span class="label label-primary">Logged in: <%= current_user.username %></span>
-    <% end %>
     <%= yield %>
   </div>
 </div>

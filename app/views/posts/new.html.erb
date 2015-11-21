@@ -1,18 +1,23 @@
 <%= form_tag(posts_path) do %>
     <h1>Create new post</h1>
-	 <div class="post-field">
-        <%= label_tag "Title: " %>
-        <%= text_field_tag :title %>
+	 <div class="panel panel-default">
+     <div class="panel-heading">
+        <%= label_tag "Title" %>
     </div>
-
-    <div class="post-field">
-        <%= label_tag "URL: " %>
-        <%= text_field_tag :url %>
+    <div class="panel-body">
+      <%= text_field_tag :title, nil, placeholder: "Enter your post title here.", class: "form-control" %>
     </div>
-
-    <%= submit_tag "Post" %>
-
+   </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= label_tag "URL" %>
+      </div>
+      <div class="panel-body">
+        <%= text_field_tag :url, nil, placeholder: "Enter your URL here.", class: "form-control" %>
+      </div>
+      </div>
+    <div class="container">
+      <%= submit_tag "Post", class: "btn btn-default btn-lg" %>
 <% end %>
-<div class="btn-link">
-  <%= link_to "Nevermind", posts_path %>
-</div>
+    <%= link_to "Nevermind", posts_path, class: "btn btn-primary btn-lg" %>
+  </div>
