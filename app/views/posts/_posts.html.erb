@@ -1,0 +1,18 @@
+<div class="col-md-10">
+
+  <ul class="posts">
+    <% @posts.each do |post| %>
+        <li class="post">
+          <%= link_to post.title, post.url, class: "post-link" %> <span class="post-url">(<%= post.url %>)</span>
+          <div class="comment-link">
+            <em>Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></em>
+            <br><%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post), class: "badge" %>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</div>
+<div class="col-md-2 posts-nav">
+  <%= paginate @posts %>
+  <%= link_to "Add a Post", posts_new_path, class: "btn btn-primary btn-lg" %>
+</div>

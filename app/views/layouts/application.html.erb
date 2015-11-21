@@ -20,7 +20,7 @@
         <div class="nav navbar-collapse collapse">
           <div class="navbar-right navbar-brand">
             <% if current_user %>
-              <%= current_user.username %> <span class="badge"><%= current_user.posts.count %></span>
+              <%= link_to current_user.username, posts_show_path(current_user) %> <span class="badge"><%= current_user.posts.count %></span>
               <%= link_to "Logoff", destroy_user_session_path, method: :delete %>
             <% else %>
               Want to join? <%= link_to "Login", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> in seconds.
