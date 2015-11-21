@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index]
 
 	def new
 		@post = Post.new
@@ -23,7 +23,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
-
+		@posts = current_user.posts.page(params[:page]).per(10)
+		render :show
 	end
 
   def delete

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "posts/new", to: "posts#new"
   post "posts", to: "posts#create"
   delete "posts", to: "posts#delete"
+  get "posts/:id", to: "posts#show", as: "posts_show"
 
 ## Comments Routes
   get "posts/:id/comments", to: "comments#show", as: "comments_show"
