@@ -4,12 +4,18 @@ class VotesController < ApplicationController
 
   def create
     @post = Post.find(params[:id])
-    @post.votes.new(user_id: current_user.id ,vote: params[:vote])
-    if @post.save
+    vote = @post.votes.find_by(user_id: current_user.id)
+    if(vote)
+      vote.update(vote: params[:vote])
       redirect_to posts_path(@post)
     else
-      flash[:alert] = "You can only vote once!"
-      redirect_to posts_path(@post)
+      @post.votes.new(user_id: current_user.id ,vote: params[:vote])
+      if @post.save
+        redirect_to posts_path(@post)
+      else
+        flash[:alert] = @post.errors.full_messages
+        redirect_to posts_path(@post)
+      end
     end
   end
 
