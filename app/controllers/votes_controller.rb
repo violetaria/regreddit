@@ -2,16 +2,21 @@ class VotesController < ApplicationController
  ## TODO
   before_action :authenticate_user!, only: [:create]
 
-  def up
+  def create
     @post = Post.find(params[:id])
-    @post.vote.create(user_id: current_user.id, post_id: @post.id ,vote: 1)
-    redirect_to post_path(@post)
+    @post.votes.new(user_id: current_user.id ,vote: params[:vote])
+    if @post.save
+      redirect_to posts_path(@post)
+    else
+      flash[:alert] = "You can only vote once!"
+      redirect_to posts_path(@post)
+    end
   end
 
-  def down
+  def index
     @post = Post.find(params[:id])
-    @post.vote.create(user_id: current_user.id, post_id: @post.id, vote: :vote -1)
-    redirect_to post_path(@post)
+    @votes = @post.votes
+    render :index
   end
 
 end
