@@ -3,11 +3,24 @@
   <ul class="posts">
     <% @posts.each do |post| %>
         <li class="post">
-          <%= link_to post.title, post.url, class: "post-link" %> <span class="post-url">(<%= post.url %>)</span>
-          <div class="comment-link">
-            <em>Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></em>
-            <br><%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post), class: "badge" %>
-          </div>
+          <div class="row">
+          <div class="col-xs-10">
+            <% if current_user %>
+                <div class="arrows">
+                  <%= link_to image_tag("arrow_up.png",class: "img-responsive img-arrow"), votes_path(post,vote: 1), method: :post %>
+                  <br><span>(<%= post.vote_count %>)</span><br>
+                  <%= link_to image_tag("arrow_down.png", class: "img-responsive img-arrow"), votes_path(post,vote: -1), method: :post %>
+                </div>
+            <% end %>
+            <div class="test-post">
+              <%= link_to post.title, post.url, class: "post-link" %> <span class="post-url">(<%= post.url %>)</span>
+            </div>
+            <div class="comment-link">
+              <em>Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></em>
+              <br><%= link_to pluralize(post.comments.count, "comment"), comments_show_path(post), class: "badge" %>
+            </div>
+            </div>
+            </div>
         </li>
     <% end %>
   </ul>

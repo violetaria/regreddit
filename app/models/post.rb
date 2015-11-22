@@ -7,4 +7,10 @@ class Post < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 
 	validates_presence_of :url, :title
+
+
+	def vote_count
+		self.votes.sum(:vote)
+	end
+
 end

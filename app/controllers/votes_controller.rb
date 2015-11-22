@@ -2,16 +2,27 @@ class VotesController < ApplicationController
  ## TODO
   before_action :authenticate_user!, only: [:create]
 
-  def up
+  def create
     @post = Post.find(params[:id])
-    @post.vote.create(user_id: current_user.id, post_id: @post.id ,vote: 1)
-    redirect_to post_path(@post)
+    vote = @post.votes.find_by(user_id: current_user.id)
+    if(vote)
+      vote.update(vote: params[:vote])
+      redirect_to posts_path(@post)
+    else
+      @post.votes.new(user_id: current_user.id ,vote: params[:vote])
+      if @post.save
+        redirect_to posts_path(@post)
+      else
+        flash[:alert] = @post.errors.full_messages
+        redirect_to posts_path(@post)
+      end
+    end
   end
 
-  def down
+  def index
     @post = Post.find(params[:id])
-    @post.vote.create(user_id: current_user.id, post_id: @post.id, vote: :vote -1)
-    redirect_to post_path(@post)
+    @votes = @post.votes
+    render :index
   end
 
 end
