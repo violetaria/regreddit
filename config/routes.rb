@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   delete "posts/:id/comments", to: "comments#delete", as: "comments_delete"
 
 ## Voting Routes
-  post "vote/up", to: "vote#up"
-  post "vote/down", to: "vote#down"
+  post "posts/:id/votes", to: "votes#create", as: "votes"
+  get "posts/:id/votes", to: "votes#index"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
