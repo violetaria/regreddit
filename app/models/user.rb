@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :posts
+  has_many :votes, through :posts
 
   validates_presence_of :email, :username
   validates_uniqueness_of :email, :username
