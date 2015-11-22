@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mandrill
-  config.action_mailer.default_url_options = { host: 'regreddit.herokuapp.com', port: 443 }
+  config.action_mailer.default_url_options = { host: 'regreddit.herokuapp.com', protocol: 'https' }
 
   # ActionMailer setup to use Mandrill
   config.action_mailer.delivery_method = :smtp
